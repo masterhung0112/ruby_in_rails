@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+```
+rails c
+user_object = {USERNAME:"user_emeail1", PASSWORD:"Password123*"}; Cognito.create_user(user_object)
+```

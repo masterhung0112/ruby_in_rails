@@ -10,8 +10,8 @@ default: &default
   pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 10 } %>
   host:     db
   username: postgres
-  database: cognito_api
-  password:
+  database: testing
+  password: myPassword
   timeout: 5000
 
 development:

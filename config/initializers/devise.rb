@@ -315,15 +315,15 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # Configure with your SAML settings (see ruby-saml's README for more information: https://github.com/onelogin/ruby-saml).
-  config.saml_configure do |settings|
-    settings.assertion_consumer_service_url     = "http://localhost:3000/users/saml/auth"
-    settings.assertion_consumer_service_binding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-    settings.name_identifier_format             = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
-    settings.issuer                             = "http://localhost:3000/saml/metadata"
-    settings.authn_context                      = ""
-    settings.idp_slo_service_url                = "http://localhost/simplesaml/www/saml2/idp/SingleLogoutService.php"
-    settings.idp_sso_service_url                = "http://localhost/simplesaml/www/saml2/idp/SSOService.php"
-    settings.idp_cert_fingerprint               = "00:A1:2B:3C:44:55:6F:A7:88:CC:DD:EE:22:33:44:55:D6:77:8F:99"
-    settings.idp_cert_fingerprint_algorithm     = "http://www.w3.org/2000/09/xmldsig#sha1"
-  end
+  # config.saml_configure do |settings|
+  #   settings.assertion_consumer_service_url     = "http://localhost:3000/users/saml/auth"
+  #   settings.assertion_consumer_service_binding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+  #   settings.name_identifier_format             = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+  #   settings.issuer                             = "http://localhost:3000/saml/metadata"
+  #   settings.authn_context                      = ""
+  #   settings.idp_slo_service_url                = "http://localhost/simplesaml/www/saml2/idp/SingleLogoutService.php"
+  #   settings.idp_sso_service_url                = "http://localhost/simplesaml/www/saml2/idp/SSOService.php"
+  #   settings.idp_cert_fingerprint               = "00:A1:2B:3C:44:55:6F:A7:88:CC:DD:EE:22:33:44:55:D6:77:8F:99"
+  #   settings.idp_cert_fingerprint_algorithm     = "http://www.w3.org/2000/09/xmldsig#sha1"
+  # end
 end
