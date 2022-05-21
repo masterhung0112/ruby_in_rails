@@ -1,0 +1,4 @@
+set two environment variables
+
+rails_server_url=URL
+rails_server_access_token=TOKEN_AUTH_OF_YOUR_CHOICE

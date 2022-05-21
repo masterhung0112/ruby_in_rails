@@ -54,6 +54,9 @@ gem 'aws-sdk-cognitoidentityprovider'
 gem "devise", "~> 4.8", ">= 4.8.1"
 gem "devise-security", ">= 0.17.0"
 gem "devise-two-factor", ">= 4.0.1"
+gem "devise_saml_authenticatable", github: "apokalipto/devise_saml_authenticatable"
+gem 'aws-sdk', '~> 3'
+
 gem 'pg'
 
 group :development, :test do
