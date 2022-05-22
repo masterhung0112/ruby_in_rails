@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  skip_before_action :verify_authenticity_token
   # before_action :configure_sign_in_params, only: [:create]
-  before_filter :restrict_access, only: [:aws_auth]
+  # before_filter :restrict_access, only: [:aws_auth]
 
   # GET /resource/sign_in
   def new
@@ -34,12 +35,12 @@ class Users::SessionsController < Devise::SessionsController
       email: nil,
       authentication_hash: nil
     }
-    user = User.where(email: aws_auth_params[:email]).first
+    user = User.where(email: params[:email]).first
 
     if user
       answer = user.as_json(only: defaults.keys)
       answer[:user_exists] = true
-      answer[:success] = user.valid_password?(aws_auth_params[:password])
+      answer[:success] = user.valid_password?(params[:password])
     else
       answer = defaults
       answer[:success] = false

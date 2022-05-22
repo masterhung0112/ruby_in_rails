@@ -1,7 +1,7 @@
+
+
 class Cognito
-  @client = Aws::CognitoIdentityProvider::Client.new(
-    region: ENV['AWS_REGION'],
-  )
+  @client = Aws::CognitoIdentityProvider::Client.new
 
   def self.authenticate(user_object)
     auth_object = {

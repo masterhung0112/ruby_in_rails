@@ -8,7 +8,9 @@ module Devise
       def authenticate!
         if params[:user]
 
-          client = Aws::CognitoIdentityProvider::Client.new
+          client = Aws::CognitoIdentityProvider::Client.new(
+            region: ENV['AWS_REGION'],
+          )
 
           begin
 

@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   #devise_for :users
   devise_for :users, controllers: {
     sessions: 'users/sessions'
-  }
+  } 
+  
+  devise_scope :user do
+   post '/aws/auth', to: 'users/sessions#aws_auth' , defaults: {format: 'json'}, as: 'aws_auth'
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,8 +15,8 @@ Rails.application.routes.draw do
   # root "home#index"
 
   # Cognito will call this endpoint to check user name and password
-  post '/aws/auth',
-   to: 'users/sessions#aws_auth',
-   defaults: {format: 'json'},
-   as: 'aws_auth'
+  #post '/aws/auth',
+  # to: 'users/sessions#aws_auth',
+  # defaults: {format: 'json'},
+  # as: 'aws_auth'
 end

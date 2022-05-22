@@ -26,5 +26,12 @@ Things you may want to cover:
 
 ```
 rails c
-user_object = {USERNAME:"user_emeail1", PASSWORD:"Password123*"}; Cognito.create_user(user_object)
+user_object = {USERNAME:"user_email5", PASSWORD:"Password123*"}; Cognito.create_user(user_object)
+
+user_object = {USERNAME:"user_email4", PASSWORD:"Password123*"}; Cognito.authenticate(user_object)
+```
+
+CURL
+```
+curl -d '{"email":"admin2@gmail.com","password":"Testing1$","access_token":"xx"}' -H "Content-Type: application/json"  -X POST http://13.229.223.132:3000/aws/auth
 ```

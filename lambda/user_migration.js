@@ -2,7 +2,7 @@
 
 console.log("Loading function");
 
-const https = require("https");
+const http = require("http");
 
 // Extract other attributes returned from Rails and convert into Cognito attributes
 const attributes = (response) => {
@@ -16,10 +16,11 @@ const attributes = (response) => {
 
 const checkUser = (server, data, callback) => {
   let postData = JSON.stringify(data);
+  console.log('rails_server_url', server, postData);
 
   let options = {
     hostname: server,
-    port: 443,
+    port: 3000,
     path: "/aws/auth",
     method: "POST",
     headers: {
@@ -28,7 +29,7 @@ const checkUser = (server, data, callback) => {
     },
   };
 
-  let req = https.request(options, (res) => {
+  let req = http.request(options, (res) => {
     let data = "";
     res.on("data", (chunk) => {
       data += chunk;
@@ -55,8 +56,7 @@ exports.handler = (event, context, callback) => {
   console.log("Migrating user:", event.userName);
 
   let rails_server_url =
-    process.env.rails_server_url || "rails.app.your_company.com";
-
+    process.env.rails_server_url || "http://13.229.223.132";
   checkUser(
     rails_server_url,
     {
