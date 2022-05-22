@@ -8,10 +8,10 @@ const https = require("https");
 // Extract other attributes returned from Rails and convert into Cognito attributes
 const attributes = (response) => {
   return {
+    username: response.username,
     email: response.email,
     email_verified: "true",
     name: response.first_name + " " + response.last_name,
-    "custom:rails_app_id": response.id,
   };
 };
 
@@ -81,7 +81,7 @@ exports.handler = (event, context, callback) => {
           event.response.userAttributes = attributes(response);
           event.response.finalUserStatus = "CONFIRMED";
           event.response.messageAction = "SUPPRESS";
-          console.log("Migrating user:", event.userName);
+          console.log("Migrating user Success:", event.userName);
           context.succeed(event);
         } else if (response.user_exists) {
           context.fail("Bad password");

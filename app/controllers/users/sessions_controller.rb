@@ -39,6 +39,9 @@ class Users::SessionsController < Devise::SessionsController
 
     if user
       answer = user.as_json(only: defaults.keys)
+      answer[:username] = params[:email].split("@").first
+      answer[:first_name] = 'first'
+      answer[:last_name] = 'last'
       answer[:user_exists] = true
       answer[:success] = user.valid_password?(params[:password])
     else
