@@ -3,6 +3,7 @@
 console.log("Loading function");
 
 const http = require("http");
+const https = require("https");
 
 // Extract other attributes returned from Rails and convert into Cognito attributes
 const attributes = (response) => {
@@ -16,8 +17,8 @@ const attributes = (response) => {
 
 const checkUser = (server, data, callback) => {
   let postData = JSON.stringify(data);
-  console.log('rails_server_url', server, postData);
-
+  console.log('Connect to', server, 'with data', postData);
+  
   let options = {
     hostname: server,
     port: 3000,
@@ -52,11 +53,14 @@ const checkUser = (server, data, callback) => {
   req.write(postData);
   req.end();
 };
+
+
+
 exports.handler = (event, context, callback) => {
   console.log("Migrating user:", event.userName);
 
-  let rails_server_url =
-    process.env.rails_server_url || "http://13.229.223.132";
+  let rails_server_url = process.env.rails_server_url || "http://172.31.24.139" || "http://13.229.223.132";
+    //process.env.rails_server_url || "http://13.229.223.132";
   checkUser(
     rails_server_url,
     {
@@ -67,6 +71,9 @@ exports.handler = (event, context, callback) => {
     (err, response) => {
       if (err) {
         return context.fail("Connection error");
+      }
+      if (!event.response) {
+        event.response = {};
       }
       if (event.triggerSource == "UserMigration_Authentication") {
         // authenticate the user with your existing user directory service
