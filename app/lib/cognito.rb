@@ -6,7 +6,7 @@ class Cognito
   def self.authenticate(user_object)
     auth_object = {
       user_pool_id: ENV['AWS_COGNITO_USER_POOL_ID'],
-      client_id: ENV['AWS_COGNITO_APP_CLIENT_ID'],
+      client_id: ENV['AWS_COGNITO_CLIENT_ID'],
       auth_flow: 'ADMIN_NO_SRP_AUTH',
       auth_parameters: user_object
     }
@@ -20,7 +20,7 @@ class Cognito
   
   def self.create_user(user_object)
     auth_object = {
-      client_id: ENV['AWS_COGNITO_APP_CLIENT_ID'],
+      client_id: ENV['AWS_COGNITO_CLIENT_ID'],
       username: user_object[:USERNAME],
       password: user_object[:PASSWORD]
     }

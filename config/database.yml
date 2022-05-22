@@ -8,7 +8,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 10 } %>
-  host:     db
+  host:     localhost
   username: postgres
   database: testing
   password: myPassword

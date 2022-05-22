@@ -57,6 +57,8 @@ gem "devise-two-factor", ">= 4.0.1"
 gem "devise_saml_authenticatable", github: "apokalipto/devise_saml_authenticatable"
 gem 'aws-sdk', '~> 3'
 
+gem "figaro"
+
 gem 'pg'
 
 group :development, :test do
